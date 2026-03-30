@@ -30,7 +30,7 @@ fi
 mode_file="$HOME/.claude/groundwork-mode"
 mode=""
 [ -f "$mode_file" ] && mode=$(cat "$mode_file" 2>/dev/null)
-[ -n "$mode" ] && mode_str=" $mode" || mode_str=""
+[ -n "$mode" ] && mode_str=" mode=$mode" || mode_str=""
 
 if [ "$hard_issues" -gt 0 ]; then
   printf "⬡ GW ✗ [%s]%s" "$branch" "$mode_str"

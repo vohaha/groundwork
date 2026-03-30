@@ -7,9 +7,9 @@ prompt=$(cat | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get(
 mode_file="$HOME/.claude/groundwork-mode"
 
 case "$prompt" in
-  */groundwork:do*|*"groundwork:do"*)  echo "do"    > "$mode_file" ;;
-  */groundwork:think*|*"groundwork:think"*) echo "think" > "$mode_file" ;;
-  */groundwork:plan*|*"groundwork:plan"*)  echo "plan"  > "$mode_file" ;;
+  /do\ *|/do)       echo "do"    > "$mode_file" ;;
+  /think\ *|/think)  echo "think" > "$mode_file" ;;
+  /plan\ *|/plan)    echo "plan"  > "$mode_file" ;;
 esac
 
 exit 0
