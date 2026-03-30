@@ -17,4 +17,8 @@ Open:
 # ─────────────────────────────────────────────────────────────────
 # Required: header line, Why, State/Next
 # Optional: Active, Discovered, Open — delete sections that don't apply
+#
+# Scaffold: this template is the human-facing scaffold (installed as ~/.gitmessage).
+# The parallel programmatic scaffold for Claude's commits is scripts/create-commit.sh.
+# Both produce the same structure. If the format changes, update both.
 # ─────────────────────────────────────────────────────────────────

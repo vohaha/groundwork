@@ -3,6 +3,10 @@
 # Called by: groundwork:check-in, groundwork:commit skills
 # Usage: create-commit.sh --type <type> --summary <summary> --why <why> --next <next>
 #        [--scope <scope>] [--active <active>] [--discovered <discovered>] [--open <open>]
+#
+# Scaffold: this script is the programmatic scaffold for Claude's commits.
+# The parallel human-facing scaffold is templates/commit-message.txt (~/.gitmessage).
+# Both produce the same structure. If the format changes, update both.
 
 type="" scope="" summary="" why="" next="" active="" discovered="" open_q=""
 
