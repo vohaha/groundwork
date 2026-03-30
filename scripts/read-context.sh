@@ -2,6 +2,9 @@
 # read-context.sh — outputs current project state at session start
 # Called by: Claude Code SessionStart hook
 
+# Clear persisted mode — modes don't carry across sessions
+rm -f "$HOME/.claude/groundwork-mode"
+
 PROJECT_ROOT=$(git -C "${PWD}" rev-parse --show-toplevel 2>/dev/null || echo "$PWD")
 AGREEMENT="$PROJECT_ROOT/WORKING_AGREEMENT.md"
 

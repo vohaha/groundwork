@@ -28,7 +28,7 @@ done
 
 echo ""
 echo "Skills"
-for skill in do think plan commit check-in setup validate help; do
+for skill in do think plan clear-mode commit check-in setup validate help; do
   path="$PLUGIN_ROOT/skills/$skill/SKILL.md"
   if [ ! -f "$path" ]; then
     fail "$skill/SKILL.md — missing"
