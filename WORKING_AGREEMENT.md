@@ -49,8 +49,8 @@
 
 ## Last Check-in
 
-- Date: 2026-03-30
-- Notes: Removed branch format warning — convention adds friction for pet projects that work on main with no feature branches. Branch naming stays optional; ⚠ state removed entirely. do/think/plan modes confirmed sufficient for cognitive overhead without needing work-type dimension.
+- Date: 2026-03-31
+- Notes: Extended setup template with model/effort heuristics, groundwork section ownership (replace on re-run with comment markers), and Operating Mode seeding for client projects. Mode system confirmed already global via ~/.claude/settings.json hook.
 
 ---
 

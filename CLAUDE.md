@@ -32,6 +32,21 @@ open questions, uncommitted count, and agreement item count.
 
 Read what the hook surfaces. Check WORKING_AGREEMENT.md if there are open items.
 
+## Model and Effort
+
+Suggest switching to Opus before starting when:
+- Architectural decision with broad or cross-cutting impact
+- Task spans 4+ files with interdependencies
+- Greenfield design (not mechanical implementation of an agreed plan)
+- Subtle debugging with many possible causes requiring deep reasoning
+
+Stay on Sonnet when:
+- Mechanical implementation of an agreed design
+- Single-file edits or straightforward bug fixes
+- Documentation updates
+
+Raise this at the start of the task, not after work is underway.
+
 ## During Work
 
 Commit at logical checkpoints using `/groundwork:commit`. Use structured format:

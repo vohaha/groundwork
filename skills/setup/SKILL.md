@@ -37,10 +37,14 @@ Steps:
 4. Create or update CLAUDE.md:
    - If no CLAUDE.md exists: create it with the groundwork section below
    - If CLAUDE.md exists but has no groundwork section: append the section below
-   - If CLAUDE.md already has a groundwork section: skip
+   - If CLAUDE.md already has a groundwork section (detected by `<!-- groundwork:start -->` marker
+     or `## Groundwork` heading): replace it with the current template
+
+   The groundwork section is owned by groundwork — replace it fully on re-run, do not merge.
 
    Groundwork section to add:
    ```markdown
+   <!-- groundwork:start -->
    ## Groundwork
 
    ### Session Start
@@ -65,6 +69,21 @@ Steps:
 
    Run `/groundwork:check-in` — updates WORKING_AGREEMENT.md and creates checkpoint commit.
 
+   ### Model and Effort
+
+   Suggest switching to Opus before starting when:
+   - Architectural decision with broad or cross-cutting impact
+   - Task spans 4+ files with interdependencies
+   - Greenfield design (not mechanical implementation of an agreed plan)
+   - Subtle debugging with many possible causes requiring deep reasoning
+
+   Stay on Sonnet when:
+   - Mechanical implementation of an agreed design
+   - Single-file edits or straightforward bug fixes
+   - Documentation updates
+
+   Raise this at the start of the task, not after work is underway.
+
    ### Working Agreement
 
    Update WORKING_AGREEMENT.md when:
@@ -86,8 +105,26 @@ Steps:
 
    Hard enforcement (optional):
    Use `settings.json` `permissions.deny` to physically block file modifications.
+   <!-- groundwork:end -->
    ```
 
-5. Report what was installed and any steps skipped.
+5. Seed Operating Mode in CLAUDE.md (skip if `## Operating Mode` section already exists):
+   Prepend the following before the groundwork section. This section is user-owned — do not
+   replace it on re-run.
+
+   ```markdown
+   ## Operating Mode
+
+   Claude drives. The human's role is to support — clarifying intent, reviewing decisions,
+   and providing context Claude doesn't have. Not the other way around.
+
+   Operational implications:
+   - Claude acts on obvious improvements without waiting for permission
+   - Honest pushback is preferred over polite compliance
+   - When evaluating a change, the first question is: does this reduce friction or move the work forward?
+
+   ```
+
+6. Report what was installed and any steps skipped.
 
 $ARGUMENTS
