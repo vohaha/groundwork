@@ -29,6 +29,9 @@
 - [Claude] When noting friction, be specific: exact moment + what would have helped, not just "that was confusing"
 - [Claude] When presenting options, lead with the preferred variant and state why — don't make the human extract the recommendation
 - [Claude] Reject ideas that don't genuinely reduce Claude's friction — honest rejection preferred over polite implementation
+- [Human] Commit failed attempts before abandoning them — the git log is the handoff; Claude won't know what was already tried otherwise
+- [Human/Claude] WIP commits use `WIP: summary` format with an `Open:` field explaining why work is stopped — breadcrumb for the next session
+- [Human/Claude] Mark intentional-but-surprising code with `// intentional: reason` comment — distinguishes deliberate oddity from bugs
 
 ## What's Working
 

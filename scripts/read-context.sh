@@ -17,6 +17,14 @@ open_q=$(echo "$last_body" | awk '/^Open:/{found=1; next} found && /^(Why|State|
 # Trajectory: Next: values from last 3 commits (skip first — already shown above)
 trajectory=$(git -C "$PROJECT_ROOT" log --skip=1 -2 --format="%b" 2>/dev/null | grep "^Next:" | sed 's/^Next: //')
 
+case "$branch" in
+  feat/*)    intent="shipping" ;;
+  fix/*)     intent="debugging" ;;
+  explore/*) intent="exploring (non-committing)" ;;
+  main|master) intent="" ;;
+  *)         intent="⚠ unrecognized branch prefix (use feat/, fix/, or explore/)" ;;
+esac
+
 uncommitted=$(git -C "$PROJECT_ROOT" status --porcelain 2>/dev/null | wc -l | tr -d ' ')
 
 open_items=0
@@ -27,6 +35,9 @@ fi
 echo ""
 echo "┌─ Groundwork: Session Start ────────────────────────────────────────────┐"
 printf "│  Branch: %-20s  %s\n" "$branch" "$last_date"
+if [ -n "$intent" ]; then
+  printf "│  Mode: %s\n" "$intent"
+fi
 printf "│  %s\n" "$last_subject"
 if [ -n "$state_next" ]; then
   printf "│\n│  → Next: %s\n" "$state_next"
