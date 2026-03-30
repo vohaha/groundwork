@@ -22,7 +22,7 @@
 <!-- Ongoing behaviors — no checkbox. Move here from Active Commitments once established. Remove if no longer relevant. -->
 
 - [Human] Use `/groundwork:check-in` at session end
-- [Human] Signal mode when it matters: `/do`, `/think`, `/plan` — reduces Claude's inference overhead
+- [Human] Signal mode at session start with `/do`, `/think`, or `/plan` — mode persists across prompts until changed or session ends
 - [Human] Surface human compliance risks — if a proposed norm requires discipline to maintain, say so; Claude will redesign to automate instead
 - [Claude] Diagnose full plugin state before proposing changes
 - [Claude] Fixes and gaps first, improvements second
@@ -38,7 +38,7 @@
 <!-- Non-obvious things worth repeating — helps Claude's asymmetric feedback problem -->
 
 - Giving the "why" behind tasks → Claude makes much better decisions
-- Explicit mode signaling (`/groundwork:do`, `think`, `plan`) → removes inference overhead
+- Mode persistence via `UserPromptSubmit` hook → mode set once, injected as system reminder every prompt; no repetition needed
 - Designing tooling by asking Claude what it needs, then building that → bilateral workflow
 - Git semantic commits as cognitive prosthetic → session orientation without extra docs
 - Claude reading the full codebase before forming opinions — no proposals based on partial reads
@@ -50,7 +50,7 @@
 ## Last Check-in
 
 - Date: 2026-03-30
-- Notes: Closed remaining open design gaps: branch-intent reading in read-context.sh (Mode: line with warning for non-conforming branches), and landed three deferred norms (breadcrumb WIP commits, human discoveries handoff, intentional: comment convention). All planned abstractions from abstractions.md now either implemented or documented.
+- Notes: Statusline improvements (branch name, ✗/⚠ severity split, mode display). Mode persistence via UserPromptSubmit hook — mode injected as system reminder each prompt, defaults to think, cleared on session start. Hook pattern fix (Claude Code strips plugin namespace: /think not /groundwork:think). /groundwork:clear-mode skill added.
 
 ---
 
