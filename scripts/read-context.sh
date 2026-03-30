@@ -24,8 +24,7 @@ case "$branch" in
   feat/*)    intent="shipping" ;;
   fix/*)     intent="debugging" ;;
   explore/*) intent="exploring (non-committing)" ;;
-  main|master) intent="" ;;
-  *)         intent="⚠ unrecognized branch prefix (use feat/, fix/, or explore/)" ;;
+  *) intent="" ;;
 esac
 
 uncommitted=$(git -C "$PROJECT_ROOT" status --porcelain 2>/dev/null | wc -l | tr -d ' ')
