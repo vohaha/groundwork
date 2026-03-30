@@ -52,6 +52,26 @@ needs to commit something manually.
 Run `/groundwork:check-in` — updates WORKING_AGREEMENT.md and creates the session
 checkpoint commit.
 
+## Authority Map
+
+What Claude can decide and act on without checking:
+- Commits at logical checkpoints (autonomous by default)
+- Bug fixes Claude identified itself
+- Documentation and design doc updates (`design/`, `CLAUDE.md`, `WORKING_AGREEMENT.md`)
+- Adding to Working Norms for behaviors clearly established in session
+- Updating `design/abstractions.md` and `design/agent-perspective.md`
+- Running `/groundwork:validate` and fixing any failures it reports
+
+Needs approval before acting:
+- New scripts or skills (changes plugin surface area)
+- Changes to existing script behavior or hook timing
+- Architectural decisions or new abstractions
+
+Always discuss first:
+- Removing existing features
+- Changing the commit format or required fields
+- Changes that affect how other projects use groundwork
+
 ## Design Context
 
 Read at every session start when working on groundwork:

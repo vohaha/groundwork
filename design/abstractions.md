@@ -92,14 +92,66 @@ immutable, versioned, co-located, and always in the log.
 
 ---
 
+## Principle priority ordering
+
+When principles conflict, apply them in this order:
+
+1. **Scaffold/content** — most fundamental (defines what groundwork IS)
+2. **Prefer existing tools** — how to implement (don't create new artifacts)
+3. **Automate everything possible** — execution quality (enforce over document)
+
+Example conflict: an existing tool doesn't automate something. Build a new automated
+tool (violates prefer-existing-tools) or use the existing tool with a documented norm
+(violates automate-everything)? Answer: prefer-existing-tools wins — add automation
+to the existing tool rather than creating a parallel new one.
+
+---
+
+## Minimal sufficient context
+
+Every addition to the session start hook, CLAUDE.md, or any always-loaded context
+must pass this test: **if Claude sees this, does it change what Claude does?**
+
+If the answer is no — if it's informational but doesn't affect behavior — it doesn't
+belong in persistent context. It belongs in a document Claude reads on demand.
+
+The risk of violating this: context accumulates until signal is buried in noise.
+Each individual addition seems valuable; collectively they degrade orientation quality.
+
+---
+
+## Automation reliability threshold
+
+Automation must be reliable or silent. A fragile automation that fails with noise
+is worse than a documented norm.
+
+Rules:
+- If a script can fail, it must exit 0 and warn — never block (see validate-commit-msg.sh)
+- If a hook fails silently, it adds no value — test it
+- Prefer a weaker automation that always works over a stronger one that sometimes breaks
+- When in doubt, make it non-blocking first; upgrade to blocking after proven reliable
+
+---
+
+## Feature audit checklist
+
+Run this mentally for any new or changed groundwork feature:
+
+1. Is the scaffold (structure) separate from the content (reasoning)? → scaffold/content
+2. Is there an existing tool that already has co-located, versioned, unavoidable, in-workflow properties? → prefer-existing-tools
+3. Can a human skip or forget this? If yes, is there automation? → automate-everything
+4. Does every addition to persistent context change Claude's behavior? → minimal-context
+5. If this automation can fail, does it fail silently/non-blocking? → reliability threshold
+6. Does `groundwork:validate` pass after the change?
+
+---
+
 ## Planned abstractions (to be designed)
 
 These gaps were identified from the agent perspective. For each, the existing-tool
 solution is preferred over a new artifact where one exists.
 
-**Authority map** — what Claude can do autonomously vs. needs approval vs. off-limits.
-→ Existing tool: **CLAUDE.md** (already loaded every session, unavoidable).
-Add a structured `## Authority` section there. No new file needed.
+**Authority map** ✓ — implemented as `## Authority Map` section in CLAUDE.md.
 
 **Session intent** — what this session is for (shipping / exploring / debugging).
 → Existing tool: **branch name prefix** (already read by session start hook).
