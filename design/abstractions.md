@@ -73,3 +73,9 @@ Content: what Claude writes in them.
 **Human discoveries handoff** — structured way to pass "what I already tried" at
 task handoff. Counterpart to `Discovered:` in commits. Scaffold: the input format.
 Content: what the human provides.
+
+**Context documents** — a general mechanism for declaring "read this before doing
+this type of work." The current `design/` folder + CLAUDE.md pointer is the first
+instance. The pattern: files that scope and gate specific modes of work, referenced
+from CLAUDE.md with explicit "when to read" conditions. Scaffold: naming convention
+and the CLAUDE.md pointer format. Content: what goes in each context document.

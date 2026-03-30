@@ -30,6 +30,13 @@ Commit autonomously during implementation. Use `/groundwork:commit` when the use
 
 Run `/groundwork:check-in` — updates WORKING_AGREEMENT.md and creates the session checkpoint commit.
 
+## Design Context
+
+When implementing or designing any groundwork component, read first:
+
+- `design/agent-perspective.md` — Claude's friction points; the "why" behind what gets built
+- `design/abstractions.md` — core patterns; scaffold/content split; naming rule
+
 ## Working Agreement
 
 Update WORKING_AGREEMENT.md when:
