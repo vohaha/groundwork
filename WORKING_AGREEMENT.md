@@ -50,7 +50,7 @@
 ## Last Check-in
 
 - Date: 2026-03-30
-- Notes: Statusline improvements (branch name, ✗/⚠ severity split, mode display). Mode persistence via UserPromptSubmit hook — mode injected as system reminder each prompt, defaults to think, cleared on session start. Hook pattern fix (Claude Code strips plugin namespace: /think not /groundwork:think). /groundwork:clear-mode skill added.
+- Notes: Removed branch format warning — convention adds friction for pet projects that work on main with no feature branches. Branch naming stays optional; ⚠ state removed entirely. do/think/plan modes confirmed sufficient for cognitive overhead without needing work-type dimension.
 
 ---
 
