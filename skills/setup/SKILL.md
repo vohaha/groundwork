@@ -71,6 +71,21 @@ Steps:
    - Something makes work harder → Open Friction Points
    - Something works unusually well → What's Working
    - We agree on a behavior change → Active Commitments
+
+   ### Authority
+
+   Role-based (applies always):
+   - Commits, bug fixes, doc updates: autonomous
+   - New scripts/skills, behavior changes: needs approval
+   - Removing features, format changes: discuss first
+
+   Path-scoped authority (optional, add as needed):
+   Use `.claude/rules/` files with `paths:` frontmatter for area-specific rules.
+   These only load when working on matching files — no context overhead otherwise.
+   Example: `.claude/rules/auth.md` with `paths: ["src/auth/**"]` → "style only".
+
+   Hard enforcement (optional):
+   Use `settings.json` `permissions.deny` to physically block file modifications.
    ```
 
 5. Report what was installed and any steps skipped.

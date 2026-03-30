@@ -151,7 +151,14 @@ Run this mentally for any new or changed groundwork feature:
 These gaps were identified from the agent perspective. For each, the existing-tool
 solution is preferred over a new artifact where one exists.
 
-**Authority map** ✓ — implemented as `## Authority Map` section in CLAUDE.md.
+**Authority map** ✓ — three-layer system using existing tools:
+- Hard off-limits: `settings.json` `permissions.deny` (harness-enforced, not guidance)
+- Path-scoped semantic authority: `.claude/rules/*.md` with `paths:` frontmatter — rules
+  that only load when working on matching files (minimal-context satisfied automatically)
+- Role-based authority: `## Authority Map` in CLAUDE.md — commits, new features,
+  architectural decisions (applies always, no path scoping needed)
+
+`.claude/rules/` is a native Claude Code feature. No groundwork infrastructure needed.
 
 **Session intent** — what this session is for (shipping / exploring / debugging).
 → Existing tool: **branch name prefix** (already read by session start hook).
