@@ -58,7 +58,7 @@ checkpoint commit.
 
 ## Design Context
 
-Before implementing or designing any groundwork component, read:
+Read at every session start when working on groundwork:
 
 - `design/agent-perspective.md` — Claude's friction points; the "why" behind what gets built
 - `design/abstractions.md` — core patterns; scaffold/content split; naming rule; prefer-existing-tools
