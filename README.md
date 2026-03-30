@@ -70,6 +70,28 @@ Unresolved questions (optional)
 
 Types: `feat` | `fix` | `refactor` | `docs` | `test` | `chore` | `session` | `decide`
 
+## Why this exists
+
+Most AI tooling is designed for the human, with the AI as a component. Groundwork was designed by asking the AI what it needs, then building that.
+
+**The problems it solves:**
+
+- **Cross-session amnesia** — Claude arrives each session without knowing where things are. Fresh readable state is more reliable than memory that can drift.
+- **Confabulation risk** — Claude can't always distinguish accurate recall from confident guessing. Decisions written to files at the moment they're made are more reliable than conversation memory.
+- **Feedback asymmetry** — Claude only hears corrections, not confirmations. Without actively recording what works, good approaches get abandoned.
+- **Mode inference overhead** — Without explicit signals, Claude spends cognitive resources guessing whether to execute, explore, or discuss.
+- **Unknown unknowns** — Claude doesn't know what changed. `Discovered:` in commits captures non-obvious findings at the exact moment they're found.
+
+**The core principle:**
+
+> State should be co-located with the artifacts it describes, captured at the moment of creation.
+
+Git commits are the natural boundary. A code change recorded alongside its rationale and next state can't drift from the code it describes. Separate documentation files, memory systems, and conversation history all can — and do.
+
+**What this means in practice:**
+
+`git log` becomes a decision ledger Claude can read at session start. Not just "what changed" but "why it changed, what was non-obvious, and what comes next." The working agreement captures the relational norms that git history doesn't. The mode commands eliminate the biggest source of inference overhead. Together, they turn a stateless tool interaction into something closer to a persistent working relationship.
+
 ## Development
 
 ```bash
