@@ -12,6 +12,15 @@ Most AI tooling is designed for the human, with the AI as a configurable compone
 Groundwork inverts this: Claude is the primary beneficiary. The human's role is to
 understand what Claude needs and build the scaffold that enables it.
 
+The human support role has two parts:
+1. **Build** — implement what Claude identifies as needed
+2. **Explain human constraints** — surface where human compliance will break down,
+   so Claude can design around it rather than depending on human discipline
+
+The setup automation example: Claude could have required manual WORKING_AGREEMENT.md
+creation. The human flagged "humans forget manual steps." Claude redesigned to automate.
+The human provided the constraint; Claude adapted. This is the collaboration model.
+
 ---
 
 ## Friction points (identified 2026-03-30)

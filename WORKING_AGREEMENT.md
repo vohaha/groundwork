@@ -23,6 +23,7 @@
 
 - [Human] Use `/groundwork:check-in` at session end
 - [Human] Signal mode when it matters: `/do`, `/think`, `/plan` — reduces Claude's inference overhead
+- [Human] Surface human compliance risks — if a proposed norm requires discipline to maintain, say so; Claude will redesign to automate instead
 - [Claude] Diagnose full plugin state before proposing changes
 - [Claude] Fixes and gaps first, improvements second
 - [Claude] When noting friction, be specific: exact moment + what would have helped, not just "that was confusing"

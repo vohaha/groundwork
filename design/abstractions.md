@@ -53,6 +53,25 @@ Current named terms:
 
 ---
 
+## Automate everything possible
+
+If a norm requires human discipline to maintain, it will fail. If automation can
+enforce it, automation must enforce it.
+
+The test for any groundwork feature: can a human skip or forget this? If yes, is
+there a hook, script, or check that makes skipping impossible or immediately visible?
+
+Hooks and scripts are always preferred over documented norms for behaviors that must
+be consistent. Norms are for things that genuinely cannot be automated — judgment,
+reasoning, communication style.
+
+**Applied:** session start hook (orientation), post-commit hook (agreement surfacing),
+commit-msg hook (Why: validation), setup creating WORKING_AGREEMENT.md and CLAUDE.md.
+
+**Not yet applied:** branch naming convention (planned), WIP commit protocol (norm only).
+
+---
+
 ## Prefer existing tools over new artifacts
 
 Before creating a new file, format, or system, ask: does an existing tool already
