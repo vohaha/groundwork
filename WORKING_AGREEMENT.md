@@ -45,11 +45,12 @@
 - `/groundwork:think` before `/groundwork:do` for anything non-trivial → catches design errors early
 - "Use existing tools" check before building anything new → prevented several unnecessary artifacts this session
 - Live session test (new session, role question) → confirmed mode transfer actually works
+- `/groundwork:think` → `/groundwork:plan` → `/groundwork:do` flow in a single session → clean execution, no backtracking
 
 ## Last Check-in
 
 - Date: 2026-03-30
-- Notes: Major session — built and validated the full groundwork foundation: operating mode, design docs, authority map, validate skill, status line, trajectory in session start hook, help skill, automate-everything and minimal-context principles.
+- Notes: Closed remaining open design gaps: branch-intent reading in read-context.sh (Mode: line with warning for non-conforming branches), and landed three deferred norms (breadcrumb WIP commits, human discoveries handoff, intentional: comment convention). All planned abstractions from abstractions.md now either implemented or documented.
 
 ---
 
