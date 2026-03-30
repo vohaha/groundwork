@@ -35,5 +35,7 @@ if [ -n "$open_q" ]; then
   printf "│\n│  Open: %s\n" "$open_q"
 fi
 printf "│\n│  Uncommitted: %-5s   Agreement open items: %s\n" "$uncommitted" "$open_items"
+echo "│"
+echo "│  Claude is the primary stakeholder. Human adapts."
 echo "└────────────────────────────────────────────────────────────────────────┘"
 echo ""
