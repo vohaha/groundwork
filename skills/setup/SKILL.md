@@ -1,6 +1,6 @@
 ---
 name: setup
-description: One-time per-project setup — installs git hooks and global commit template
+description: One-time per-project setup — installs git hooks, commit template, WORKING_AGREEMENT.md, and CLAUDE.md
 disable-model-invocation: true
 ---
 
@@ -30,6 +30,50 @@ Steps:
    - Copy ${CLAUDE_PLUGIN_ROOT}/templates/commit-message.txt to ~/.gitmessage
    - Run: git config --global commit.template ~/.gitmessage
 
-3. Report what was installed and any steps skipped.
+3. Create WORKING_AGREEMENT.md at the project root (skip if already exists):
+   - Copy ${CLAUDE_PLUGIN_ROOT}/templates/working-agreement.md to ./WORKING_AGREEMENT.md
+   - Replace `[project]` in the header with the actual project name (use the directory name if unsure)
+
+4. Create or update CLAUDE.md:
+   - If no CLAUDE.md exists: create it with the groundwork section below
+   - If CLAUDE.md exists but has no groundwork section: append the section below
+   - If CLAUDE.md already has a groundwork section: skip
+
+   Groundwork section to add:
+   ```markdown
+   ## Groundwork
+
+   ### Session Start
+
+   Run to orient:
+   - `git log -3 --format="── %h ── %s ──%n%b"`
+   - `git status --short`
+
+   Read `State:/Next:` from the most recent commit.
+   Check `WORKING_AGREEMENT.md` for open items — surface them before starting work.
+
+   ### During Work
+
+   Commit at logical checkpoints with `/groundwork:commit`.
+
+   Format: `type(scope): summary` + `Why:` (required) + `State:/Next:` (required)
+   Optional: `Discovered:` (non-obvious findings) | `Open:` (unresolved questions)
+   Types: `feat` | `fix` | `refactor` | `docs` | `test` | `chore` | `session` | `decide`
+
+   Commit autonomously. The commit message IS the state — don't defer commits.
+
+   ### Session End
+
+   Run `/groundwork:check-in` — updates WORKING_AGREEMENT.md and creates checkpoint commit.
+
+   ### Working Agreement
+
+   Update WORKING_AGREEMENT.md when:
+   - Something makes work harder → Open Friction Points
+   - Something works unusually well → What's Working
+   - We agree on a behavior change → Active Commitments
+   ```
+
+5. Report what was installed and any steps skipped.
 
 $ARGUMENTS

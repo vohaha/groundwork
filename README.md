@@ -30,24 +30,12 @@ Gives Claude ground to stand on: orientation at session start, semantic git hist
 /groundwork:setup
 ```
 
-Installs `.git/hooks/commit-msg` (warns on missing `Why:`) and `.git/hooks/post-commit` (surfaces open agreement items). Also installs `~/.gitmessage` global commit template.
-
-### Add to your project
-
-Create `WORKING_AGREEMENT.md` at the project root. See template in `templates/working-agreement.md`.
-
-Add to `CLAUDE.md`:
-
-```markdown
-## Session Start
-At session start: run `git log -3 --format="%B"` and `git status` to orient.
-Read `State: / Next:` from the most recent commit.
-Check WORKING_AGREEMENT.md for open items — surface them before starting work.
-
-## Commits
-Commit autonomously at logical checkpoints. Use `groundwork:commit` for structured messages.
-Use `groundwork:check-in` at session end.
-```
+Installs everything needed:
+- `.git/hooks/commit-msg` — warns on missing `Why:`
+- `.git/hooks/post-commit` — surfaces open agreement items after each commit
+- `~/.gitmessage` — global commit template (skipped if already set)
+- `WORKING_AGREEMENT.md` — created from template (skipped if already exists)
+- `CLAUDE.md` — groundwork section added (skipped if already present)
 
 ## Commit format
 
