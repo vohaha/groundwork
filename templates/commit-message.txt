@@ -1,0 +1,20 @@
+# type(scope): summary
+# Types: feat | fix | refactor | docs | test | chore | session | decide
+
+Why:
+
+
+State:
+Next:
+Active:
+
+Discovered:
+
+
+Open:
+
+
+# ─────────────────────────────────────────────────────────────────
+# Required: header line, Why, State/Next
+# Optional: Active, Discovered, Open — delete sections that don't apply
+# ─────────────────────────────────────────────────────────────────
