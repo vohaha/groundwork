@@ -45,12 +45,11 @@ Steps:
 
    ### Session Start
 
-   Run to orient:
-   - `git log -3 --format="── %h ── %s ──%n%b"`
-   - `git status --short`
+   Orientation is handled automatically by the groundwork `SessionStart` hook —
+   the session start box contains branch, last commit, trajectory, open questions,
+   uncommitted count, and agreement item count.
 
-   Read `State:/Next:` from the most recent commit.
-   Check `WORKING_AGREEMENT.md` for open items — surface them before starting work.
+   Check `WORKING_AGREEMENT.md` if there are open items.
 
    ### During Work
 

@@ -14,11 +14,14 @@ state_next=$(echo "$last_body" | grep "^Next:" | head -1 | sed 's/^Next: //')
 active=$(echo "$last_body" | grep "^Active:" | head -1 | sed 's/^Active: //')
 open_q=$(echo "$last_body" | awk '/^Open:/{found=1; next} found && /^(Why|State|Discovered|Active|Next):/{exit} found && /^$/{if(printed) exit; next} found{print; printed=1}' | head -2)
 
+# Trajectory: Next: values from last 3 commits (skip first — already shown above)
+trajectory=$(git -C "$PROJECT_ROOT" log --skip=1 -2 --format="%b" 2>/dev/null | grep "^Next:" | sed 's/^Next: //')
+
 uncommitted=$(git -C "$PROJECT_ROOT" status --porcelain 2>/dev/null | wc -l | tr -d ' ')
 
 open_items=0
 if [ -f "$AGREEMENT" ]; then
-  open_items=$(grep -cE "^- \[ \]" "$AGREEMENT" 2>/dev/null || echo 0)
+  open_items=$(grep -cE "^- \[ \]" "$AGREEMENT" 2>/dev/null) || open_items=0
 fi
 
 echo ""
@@ -30,6 +33,11 @@ if [ -n "$state_next" ]; then
 fi
 if [ -n "$active" ]; then
   printf "│    Active: %s\n" "$active"
+fi
+if [ -n "$trajectory" ]; then
+  while IFS= read -r line; do
+    printf "│    prev: %s\n" "$line"
+  done <<< "$trajectory"
 fi
 if [ -n "$open_q" ]; then
   printf "│\n│  Open: %s\n" "$open_q"
