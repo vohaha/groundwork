@@ -28,6 +28,7 @@
 - [Claude] Fixes and gaps first, improvements second
 - [Claude] When noting friction, be specific: exact moment + what would have helped, not just "that was confusing"
 - [Claude] When presenting options, lead with the preferred variant and state why — don't make the human extract the recommendation
+- [Claude] Reject ideas that don't genuinely reduce Claude's friction — honest rejection preferred over polite implementation
 
 ## What's Working
 
@@ -38,11 +39,14 @@
 - Designing tooling by asking Claude what it needs, then building that → bilateral workflow
 - Git semantic commits as cognitive prosthetic → session orientation without extra docs
 - Claude reading the full codebase before forming opinions — no proposals based on partial reads
+- `/groundwork:think` before `/groundwork:do` for anything non-trivial → catches design errors early
+- "Use existing tools" check before building anything new → prevented several unnecessary artifacts this session
+- Live session test (new session, role question) → confirmed mode transfer actually works
 
 ## Last Check-in
 
 - Date: 2026-03-30
-- Notes: Stabilized plugin — fixed commit-msg hook bug, added WORKING_AGREEMENT template, CLAUDE.md. Broader vision to be elaborated next.
+- Notes: Major session — built and validated the full groundwork foundation: operating mode, design docs, authority map, validate skill, status line, trajectory in session start hook, help skill, automate-everything and minimal-context principles.
 
 ---
 
