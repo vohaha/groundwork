@@ -53,29 +53,56 @@ Current named terms:
 
 ---
 
+## Prefer existing tools over new artifacts
+
+Before creating a new file, format, or system, ask: does an existing tool already
+have the right properties?
+
+Properties that matter:
+- **Co-located** with what it describes — can't drift from reality
+- **Versioned** — history preserved automatically
+- **Unavoidable** — always encountered, not only if you look for it
+- **Already in the workflow** — no new habit required
+
+If an existing tool scores high on these, use it. Only create something new when
+no existing tool fits. New artifacts carry maintenance cost, drift risk, and
+discoverability overhead that existing tools have already solved.
+
+**Origin:** STATE.md → git commits. A separate file could drift; a commit is
+immutable, versioned, co-located, and always in the log.
+
+---
+
 ## Planned abstractions (to be designed)
 
-These gaps were identified from the agent perspective. Each needs a scaffold designed
-before it can be implemented.
+These gaps were identified from the agent perspective. For each, the existing-tool
+solution is preferred over a new artifact where one exists.
 
-**Authority map** — explicit declaration of what Claude can do autonomously vs. needs
-approval vs. is off-limits. Scaffold: categories + format for declaring items.
-Content: Claude's application of those rules to unlisted edge cases.
+**Authority map** — what Claude can do autonomously vs. needs approval vs. off-limits.
+→ Existing tool: **CLAUDE.md** (already loaded every session, unavoidable).
+Add a structured `## Authority` section there. No new file needed.
 
-**Session intent** — structured declaration at session start of what this session is
-for (shipping / exploring / debugging / thinking). Scaffold: the format and valid modes.
-Content: Claude's behavior changes given the declared intent.
+**Session intent** — what this session is for (shipping / exploring / debugging).
+→ Existing tool: **branch name prefix** (already read by session start hook).
+Convention: `feat/` = shipping, `fix/` = debugging, `explore/` = non-committing.
+Zero new infrastructure; interpret what's already there.
 
-**Breadcrumb protocol** — convention for leaving "why this is in this state" notes for
-in-flight work that isn't yet committed. Scaffold: the format and placement convention.
-Content: what Claude writes in them.
+**Breadcrumb protocol** — why in-flight work is in its current state.
+→ Existing tool: **WIP commits** (already a git convention).
+`WIP: summary` commit with `Open:` field explaining why we stopped.
+Immutable, versioned, visible at session start.
 
-**Human discoveries handoff** — structured way to pass "what I already tried" at
-task handoff. Counterpart to `Discovered:` in commits. Scaffold: the input format.
-Content: what the human provides.
+**Human discoveries handoff** — "I tried X and it didn't work."
+→ Existing tool: **git commits** (humans commit failed attempts).
+Working norm: commit failures, don't just abandon them. The log is the handoff.
+→ Add to WORKING_AGREEMENT.md as a norm.
 
-**Context documents** — a general mechanism for declaring "read this before doing
-this type of work." The current `design/` folder + CLAUDE.md pointer is the first
-instance. The pattern: files that scope and gate specific modes of work, referenced
-from CLAUDE.md with explicit "when to read" conditions. Scaffold: naming convention
-and the CLAUDE.md pointer format. Content: what goes in each context document.
+**Intentional-but-surprising design** — "this looks wrong but it's correct."
+→ No clean existing tool. Lightest possible new convention: `// intentional:` comment
+prefix in code, optionally echoed in `Discovered:` field of the relevant commit.
+A comment prefix, not a new file or system.
+
+**Context documents** — "read this before doing this type of work."
+→ Existing tool: **CLAUDE.md** pointer + `design/` folder (already in place).
+Pattern: named files in `design/`, referenced from CLAUDE.md with explicit when-to-read
+conditions. Scaffold: the pointer format. Content: what goes in each document.
