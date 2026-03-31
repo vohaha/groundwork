@@ -66,7 +66,7 @@
 ## Last Check-in
 
 - Date: 2026-03-31
-- Notes: Setup skill now handles existing WORKING_AGREEMENT.md gracefully (checks for missing sections instead of skipping). Added guard-env.sh hook script to block .env file access. Autonomy norms testing continues — no friction observed yet.
+- Notes: Fixed commit skill broken in client projects — disable-model-invocation: true blocks skills that need model reasoning. Other step-executing skills (check-in, setup, validate) still have the flag and may need the same fix.
 
 ---
 
