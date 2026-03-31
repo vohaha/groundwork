@@ -15,7 +15,7 @@ echo "── Groundwork: Structural Validation ───────────
 
 echo ""
 echo "Scripts"
-for script in validate-commit-msg.sh check-agreements.sh read-context.sh create-commit.sh statusline.sh track-mode.sh validate.sh; do
+for script in validate-commit-msg.sh check-agreements.sh read-context.sh create-commit.sh statusline.sh track-mode.sh validate.sh setup.sh; do
   path="$PLUGIN_ROOT/scripts/$script"
   if [ ! -f "$path" ]; then
     fail "$script — missing"
@@ -39,7 +39,7 @@ done
 
 echo ""
 echo "Templates"
-for tpl in commit-message.txt working-agreement.md; do
+for tpl in commit-message.txt working-agreement.md claude-md-groundwork.md; do
   path="$PLUGIN_ROOT/templates/$tpl"
   [ -f "$path" ] && ok "$tpl" || fail "$tpl — missing"
 done

@@ -14,7 +14,6 @@ case "$prompt" in
 esac
 
 mode=$(cat "$mode_file" 2>/dev/null)
-[ -z "$mode" ] && mode="think"
 
 case "$mode" in
   do)    echo "Active mode: do — execute directly, no options, brief report only." ;;
