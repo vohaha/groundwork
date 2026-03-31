@@ -62,6 +62,9 @@ Types: `feat` | `fix` | `refactor` | `docs` | `test` | `chore` | `session` | `de
 Commit autonomously during implementation. Use `/groundwork:commit` when the user
 needs to commit something manually.
 
+Save non-obvious insights to memory autonomously — don't ask permission for
+recoverable actions. Memory can be corrected or removed later.
+
 ## Session End
 
 Run `/groundwork:check-in` — updates WORKING_AGREEMENT.md and creates the session
