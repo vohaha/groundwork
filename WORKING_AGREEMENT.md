@@ -7,6 +7,15 @@
 
 ---
 
+## Current Priorities
+<!-- 3 items max, ordered. What matters most right now. -->
+<!-- Claude reads this at session start — shapes judgment calls about effort, scope, and tradeoffs. -->
+<!-- Update when priorities shift. Empty = Claude can't make tradeoff decisions. -->
+
+1. Test autonomy norms (Phase 1-3) over next few sessions — groundwork v0.1.0
+2. Client project setup — verify `/groundwork:setup` end-to-end in game1
+3. —
+
 ## Open Friction Points
 
 <!-- What makes work harder — add when you notice it, either party -->
@@ -16,6 +25,8 @@
 
 <!-- One-time actions needed to establish something new — check off when done -->
 <!-- Format: - [ ] [Claude/Human] What — YYYY-MM-DD -->
+
+- [ ] [Claude/Human] Review autonomy norms — are self-verification, request intake, self-escalation, and priority context working? Decide: keep as norms, adjust, or automate — 2026-04-03
 
 ## Working Norms
 
@@ -29,6 +40,9 @@
 - [Claude] When noting friction, be specific: exact moment + what would have helped, not just "that was confusing"
 - [Claude] When presenting options, lead with the preferred variant and state why — don't make the human extract the recommendation
 - [Claude] Reject ideas that don't genuinely reduce Claude's friction — honest rejection preferred over polite implementation
+- [Claude] Recoverable mistakes are acceptable — commit before changing direction so reasoning is visible
+- [Claude] For non-trivial tasks, may ask for outcome/acceptance criteria before starting — human can skip
+- [Claude] Self-escalate from do→think when uncertain mid-execution — flag it visibly, don't forge ahead
 - [Human] Commit failed attempts before abandoning them — the git log is the handoff; Claude won't know what was already tried otherwise
 - [Human/Claude] WIP commits use `WIP: summary` format with an `Open:` field explaining why work is stopped — breadcrumb for the next session
 - [Human/Claude] Mark intentional-but-surprising code with `// intentional: reason` comment — distinguishes deliberate oddity from bugs
@@ -46,11 +60,13 @@
 - "Use existing tools" check before building anything new → prevented several unnecessary artifacts this session
 - Live session test (new session, role question) → confirmed mode transfer actually works
 - `/groundwork:think` → `/groundwork:plan` → `/groundwork:do` flow in a single session → clean execution, no backtracking
+- Brainstorming autonomy improvements by asking Claude what it needs → produced 7 concrete items, most are zero-cost norm changes
+- Human pushing "automate the human check" instinct → keeps groundwork honest about automation-first principle
 
 ## Last Check-in
 
 - Date: 2026-03-31
-- Notes: Extended setup template with model/effort heuristics, groundwork section ownership (replace on re-run with comment markers), and Operating Mode seeding for client projects. Mode system confirmed already global via ~/.claude/settings.json hook.
+- Notes: Designed and implemented autonomy improvements — self-verification, request intake, self-escalation norms in /do mode; priorities section in working agreement with statusline warning; checkpoint at 2026-04-03 for review. Phase 4 (config system + outcome enforcement hook) deferred to post-checkpoint.
 
 ---
 

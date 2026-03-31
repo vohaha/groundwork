@@ -90,6 +90,7 @@ Steps:
    - Something makes work harder → Open Friction Points
    - Something works unusually well → What's Working
    - We agree on a behavior change → Active Commitments
+   - Priorities shift → Current Priorities (3 max, ordered — shapes all tradeoff decisions)
 
    ### Authority
 

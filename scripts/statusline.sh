@@ -20,17 +20,28 @@ else
   hard_issues=$((hard_issues + 1))
 fi
 
+# Check priorities
+priorities_set=0
+if [ -f "$AGREEMENT" ]; then
+  has_p=$(awk '/^## Current Priorities/{f=1;next} f&&/^## /{exit} f&&/^[0-9]+\./{s=$0;sub(/^[0-9]+\. */,"",s); if(s!="-"&&s!="—"&&s!=""){print 1;exit}}' "$AGREEMENT")
+  [ -n "$has_p" ] && priorities_set=1
+fi
+
 # Current mode (written by UserPromptSubmit hook when mode skills are invoked)
 mode_file="$HOME/.claude/groundwork-mode"
 mode=""
 [ -f "$mode_file" ] && mode=$(cat "$mode_file" 2>/dev/null)
 [ -n "$mode" ] && mode_str=" mode=$mode" || mode_str=""
 
+# Warnings suffix
+warnings=""
+[ "$open_items" -gt 0 ] && warnings="${warnings} ${open_items}open"
+[ "$priorities_set" -eq 0 ] && warnings="${warnings} !P"
+
 if [ "$hard_issues" -gt 0 ]; then
-  printf "⬡ GW ✗ [%s]%s" "$branch" "$mode_str"
-  [ "$open_items" -gt 0 ] && printf " %s open" "$open_items"
-elif [ "$open_items" -gt 0 ]; then
-  printf "⬡ GW ✓ [%s]%s %s open" "$branch" "$mode_str" "$open_items"
+  printf "⬡ GW ✗ [%s]%s%s" "$branch" "$mode_str" "$warnings"
+elif [ -n "$warnings" ]; then
+  printf "⬡ GW ✓ [%s]%s%s" "$branch" "$mode_str" "$warnings"
 else
   printf "⬡ GW ✓ [%s]%s" "$branch" "$mode_str"
 fi

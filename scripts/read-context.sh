@@ -55,6 +55,17 @@ fi
 if [ -n "$open_q" ]; then
   printf "│\n│  Open: %s\n" "$open_q"
 fi
+# Check priorities
+priority=""
+if [ -f "$AGREEMENT" ]; then
+  priority=$(awk '/^## Current Priorities/{f=1;next} f&&/^## /{exit} f&&/^[0-9]+\./{s=$0;sub(/^[0-9]+\. */,"",s); if(s!="-"&&s!="—"&&s!=""){print s;exit}}' "$AGREEMENT")
+fi
+
+if [ -n "$priority" ]; then
+  printf "│  Priority: %s\n" "$priority"
+else
+  printf "│  ⚠ No priorities set\n"
+fi
 printf "│\n│  Uncommitted: %-5s   Agreement open items: %s\n" "$uncommitted" "$open_items"
 echo "│"
 echo "│  Claude is the primary stakeholder. Human adapts."

@@ -7,6 +7,15 @@
 
 ---
 
+## Current Priorities
+<!-- 3 items max, ordered. What matters most right now. -->
+<!-- Claude reads this at session start — shapes judgment calls about effort, scope, and tradeoffs. -->
+<!-- Update when priorities shift. Empty = Claude can't make tradeoff decisions. -->
+
+1. —
+2. —
+3. —
+
 ## Open Friction Points
 <!-- What makes work harder — add when you notice it, either party -->
 <!-- Format: - [ ] [Claude/Human] Description — YYYY-MM-DD -->
@@ -25,6 +34,8 @@
 - [Human] Use `/groundwork:check-in` at session end
 - [Human] Signal mode when it matters: `/do`, `/think`, `/plan` — reduces Claude's inference overhead
 - [Claude] When noting friction, be specific: exact moment + what would have helped, not just "that was confusing"
+- [Claude] Recoverable mistakes are acceptable — commit before changing direction so reasoning is visible
+- [Claude] For non-trivial tasks, may ask for outcome/acceptance criteria before starting — human can skip
 
 ## What's Working
 <!-- Non-obvious things worth repeating — helps Claude's asymmetric feedback problem -->

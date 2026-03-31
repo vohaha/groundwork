@@ -45,6 +45,14 @@ for tpl in commit-message.txt working-agreement.md; do
 done
 
 echo ""
+echo "Template content"
+if grep -q "## Current Priorities" "$PLUGIN_ROOT/templates/working-agreement.md" 2>/dev/null; then
+  ok "working-agreement.md has Current Priorities section"
+else
+  fail "working-agreement.md missing Current Priorities section"
+fi
+
+echo ""
 echo "Scaffold comments"
 for script in create-commit.sh commit-message.txt; do
   if grep -q "Scaffold:" "$PLUGIN_ROOT/scripts/$script" 2>/dev/null || \
