@@ -81,6 +81,8 @@ PROJECT_ROOT=$(git -C "${PWD}" rev-parse --show-toplevel 2>/dev/null)
 if [ -n "$PROJECT_ROOT" ] && [ -f "$PROJECT_ROOT/.git/hooks/commit-msg" ]; then
   if grep -q '"\$1"' "$PROJECT_ROOT/.git/hooks/commit-msg"; then
     ok "commit-msg hook passes \$1 correctly"
+  elif grep -q '""' "$PROJECT_ROOT/.git/hooks/commit-msg"; then
+    fail "commit-msg hook passes \"\" instead of \"\$1\" — run /groundwork:setup to fix"
   else
     fail "commit-msg hook does not pass \$1 — run /groundwork:setup to fix"
   fi
@@ -89,10 +91,20 @@ if [ -n "$PROJECT_ROOT" ] && [ -f "$PROJECT_ROOT/.git/hooks/commit-msg" ]; then
   else
     fail "commit-msg hook is not executable"
   fi
+  if grep -q 'validate-commit-msg.sh' "$PROJECT_ROOT/.git/hooks/commit-msg"; then
+    ok "commit-msg hook references validate-commit-msg.sh"
+  else
+    fail "commit-msg hook missing validate-commit-msg.sh reference"
+  fi
   if [ -x "$PROJECT_ROOT/.git/hooks/post-commit" ]; then
     ok "post-commit hook is executable"
   else
     fail "post-commit hook is not executable"
+  fi
+  if grep -q 'check-agreements.sh' "$PROJECT_ROOT/.git/hooks/post-commit"; then
+    ok "post-commit hook references check-agreements.sh"
+  else
+    fail "post-commit hook missing check-agreements.sh reference"
   fi
 else
   echo "  — no project hooks found (run /groundwork:setup in a project)"

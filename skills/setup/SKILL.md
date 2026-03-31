@@ -1,7 +1,7 @@
 ---
 name: setup
 description: One-time per-project setup — installs git hooks, commit template, WORKING_AGREEMENT.md, and CLAUDE.md
-disable-model-invocation: true
+disable-model-invocation: false
 ---
 
 Install groundwork git integration for this project.
@@ -12,7 +12,8 @@ Steps:
 
 1. Install git hooks for the current project:
 
-   Write .git/hooks/commit-msg with content:
+   Write .git/hooks/commit-msg with this EXACT content (use the Write tool, not Bash,
+   to prevent shell expansion of $1):
 
    ```
    #!/usr/bin/env bash
@@ -140,6 +141,9 @@ Steps:
    - When evaluating a change, the first question is: does this reduce friction or move the work forward?
    ```
 
-6. Report what was installed and any steps skipped.
+6. Run validation: bash "${CLAUDE_PLUGIN_ROOT}/scripts/validate.sh"
+   If any checks fail, fix them before reporting.
+
+7. Report what was installed, any steps skipped, and validation results.
 
 $ARGUMENTS

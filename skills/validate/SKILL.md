@@ -1,7 +1,7 @@
 ---
 name: validate
 description: Run structural validation checks on groundwork features — scripts, skills, templates, hooks, and format consistency
-disable-model-invocation: true
+disable-model-invocation: false
 ---
 
 Run groundwork structural validation.

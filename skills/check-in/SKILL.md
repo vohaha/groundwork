@@ -1,7 +1,7 @@
 ---
 name: check-in
 description: Session end ritual — update working agreement and create session checkpoint commit
-disable-model-invocation: true
+disable-model-invocation: false
 ---
 
 Session check-in. We are wrapping up.
@@ -18,7 +18,7 @@ Session check-in. We are wrapping up.
 4. Stage all modified tracked files (git add)
 5. Create a session commit using ${CLAUDE_PLUGIN_ROOT}/scripts/create-commit.sh:
    - --type session
-   - --summary "YYYY-MM-DD"
+   - --summary "YYYY-MM-DD — <brief phrase: what this session accomplished>"
    - --why "<one sentence: what this session accomplished>"
    - --next "<the most important next action>"
    - --active "<current story/epic if applicable>"
