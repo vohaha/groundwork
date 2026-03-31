@@ -1,7 +1,7 @@
 ---
 name: commit
 description: Create a semantically structured git commit with Why, State, and optional Discovered/Open sections
-disable-model-invocation: true
+disable-model-invocation: false
 ---
 
 Create a structured git commit.
