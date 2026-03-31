@@ -51,6 +51,7 @@
 
 <!-- Non-obvious things worth repeating — helps Claude's asymmetric feedback problem -->
 
+- "Analyze build-planner, then improve groundwork" — using a real client project as the lens for plugin improvements found bugs no amount of self-inspection would (the "" hook bug, validate checking existence but not content)
 - Giving the "why" behind tasks → Claude makes much better decisions
 - Mode persistence via `UserPromptSubmit` hook → mode set once, injected as system reminder every prompt; no repetition needed
 - Designing tooling by asking Claude what it needs, then building that → bilateral workflow
@@ -66,7 +67,7 @@
 ## Last Check-in
 
 - Date: 2026-03-31
-- Notes: Fixed commit skill broken in client projects — disable-model-invocation: true blocks skills that need model reasoning. Other step-executing skills (check-in, setup, validate) still have the flag and may need the same fix.
+- Notes: Fixed disable-model-invocation on remaining skills (check-in, setup, validate). Hardened setup to run validate as final step. Validate now checks hook content, not just existence. Fixed build-planner's broken commit-msg hook. Session commits now include summary phrase.
 
 ---
 
