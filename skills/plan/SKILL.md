@@ -7,6 +7,8 @@ disable-model-invocation: true
 Plan mode.
 
 - Read relevant code and context to understand the space
+- If `docs/domain/` exists, read relevant domain files before designing —
+  these contain expertise a new session needs
 - For cross-cutting work (multiple concerns, 4+ files), consider parallel exploration
   agents to cover different areas simultaneously before designing — faster and more
   thorough than sequential reading

@@ -55,14 +55,35 @@ Steps:
    ```markdown
    ## Domain
 
-   <!-- Key domain concepts, terminology, and decisions that a new session needs.
+   <!-- Brief domain summary — what a new session needs to orient.
+        For detailed domain knowledge, see docs/domain/.
         This section is user-owned — groundwork will not overwrite it.
         Update during check-in when domain understanding deepens. -->
    ```
 
-5. Run validation: bash "${CLAUDE_PLUGIN_ROOT}/scripts/validate.sh"
+5. Create `docs/domain/` directory if it doesn't exist:
+   ```
+   mkdir -p docs/domain
+   ```
+   If the directory was just created (empty), add a README.md:
+   ```markdown
+   # Domain Knowledge
+
+   Detailed domain context for Claude. Files here are read by the plan skill
+   before designing features — they provide the expertise a new session needs.
+
+   Keep files focused: one concept per file, written for an agent that has
+   never seen this domain before.
+
+   Examples:
+   - `game-mechanics.md` — how the core game systems work
+   - `user-workflows.md` — what users actually do with this app
+   - `terminology.md` — domain-specific terms and their meanings
+   ```
+
+6. Run validation: bash "${CLAUDE_PLUGIN_ROOT}/scripts/validate.sh"
    If any checks fail, fix them before reporting.
 
-6. Report what was installed, any steps skipped, and validation results.
+7. Report what was installed, any steps skipped, and validation results.
 
 $ARGUMENTS
