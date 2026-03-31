@@ -31,9 +31,10 @@ Steps:
 
    The groundwork section is owned by groundwork — replace it fully on re-run, do not merge.
 
-4. Seed Operating Mode in CLAUDE.md (skip if `## Operating Mode` section already exists):
-   Prepend the following before the groundwork section. This section is user-owned — do not
-   replace it on re-run.
+4. Seed user-owned sections in CLAUDE.md (skip each if already exists):
+
+   a. Operating Mode (skip if `## Operating Mode` exists):
+      Prepend before the groundwork section.
 
    ```markdown
    ## Operating Mode
@@ -46,6 +47,17 @@ Steps:
    - Claude acts on obvious improvements without waiting for permission
    - Honest pushback is preferred over polite compliance
    - When evaluating a change, the first question is: does this reduce friction or move the work forward?
+   ```
+
+   b. Domain (skip if `## Domain` exists):
+      Add after Operating Mode, before the groundwork section.
+
+   ```markdown
+   ## Domain
+
+   <!-- Key domain concepts, terminology, and decisions that a new session needs.
+        This section is user-owned — groundwork will not overwrite it.
+        Update during check-in when domain understanding deepens. -->
    ```
 
 5. Run validation: bash "${CLAUDE_PLUGIN_ROOT}/scripts/validate.sh"

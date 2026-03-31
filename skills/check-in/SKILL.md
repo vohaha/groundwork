@@ -15,6 +15,9 @@ Session check-in. We are wrapping up.
 3. Write non-obvious understanding from this session to auto-memory —
    not what you did, but what you now understand that isn't obvious from
    the code or git history
+3b. If domain understanding deepened this session (new terms, concepts, or
+   decisions a future session would need), update the `## Domain` section
+   in CLAUDE.md. Keep it concise — only what changes behavior.
 4. Stage all modified tracked files (git add)
 5. Create a session commit using ${CLAUDE_PLUGIN_ROOT}/scripts/create-commit.sh:
    - --type session
