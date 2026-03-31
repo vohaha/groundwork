@@ -7,6 +7,7 @@ PROJECT_ROOT=$(git -C "${PWD}" rev-parse --show-toplevel 2>/dev/null) || exit 0
 hard_issues=0
 open_items=0
 
+project=$(basename "$PROJECT_ROOT")
 branch=$(git -C "${PWD}" rev-parse --abbrev-ref HEAD 2>/dev/null)
 
 # Hard issues: structural problems that break groundwork
@@ -39,10 +40,10 @@ warnings=""
 [ "$priorities_set" -eq 0 ] && warnings="${warnings} !P"
 
 if [ "$hard_issues" -gt 0 ]; then
-  printf "⬡ GW ✗ [%s]%s%s" "$branch" "$mode_str" "$warnings"
+  printf "⬡ %s ✗ [%s]%s%s" "$project" "$branch" "$mode_str" "$warnings"
 elif [ -n "$warnings" ]; then
-  printf "⬡ GW ✓ [%s]%s%s" "$branch" "$mode_str" "$warnings"
+  printf "⬡ %s ✓ [%s]%s%s" "$project" "$branch" "$mode_str" "$warnings"
 else
-  printf "⬡ GW ✓ [%s]%s" "$branch" "$mode_str"
+  printf "⬡ %s ✓ [%s]%s" "$project" "$branch" "$mode_str"
 fi
 exit 0
