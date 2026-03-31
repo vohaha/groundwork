@@ -66,7 +66,7 @@
 ## Last Check-in
 
 - Date: 2026-03-31
-- Notes: Designed and implemented autonomy improvements — self-verification, request intake, self-escalation norms in /do mode; priorities section in working agreement with statusline warning; checkpoint at 2026-04-03 for review. Phase 4 (config system + outcome enforcement hook) deferred to post-checkpoint.
+- Notes: Setup skill now handles existing WORKING_AGREEMENT.md gracefully (checks for missing sections instead of skipping). Added guard-env.sh hook script to block .env file access. Autonomy norms testing continues — no friction observed yet.
 
 ---
 

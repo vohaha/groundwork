@@ -13,12 +13,14 @@ Steps:
 1. Install git hooks for the current project:
 
    Write .git/hooks/commit-msg with content:
+
    ```
    #!/usr/bin/env bash
    bash "${CLAUDE_PLUGIN_ROOT}/scripts/validate-commit-msg.sh" "$1"
    ```
 
    Write .git/hooks/post-commit with content:
+
    ```
    #!/usr/bin/env bash
    bash "${CLAUDE_PLUGIN_ROOT}/scripts/check-agreements.sh" "$PWD"
@@ -30,9 +32,14 @@ Steps:
    - Copy ${CLAUDE_PLUGIN_ROOT}/templates/commit-message.txt to ~/.gitmessage
    - Run: git config --global commit.template ~/.gitmessage
 
-3. Create WORKING_AGREEMENT.md at the project root (skip if already exists):
-   - Copy ${CLAUDE_PLUGIN_ROOT}/templates/working-agreement.md to ./WORKING_AGREEMENT.md
-   - Replace `[project]` in the header with the actual project name (use the directory name if unsure)
+3. Create or check WORKING_AGREEMENT.md at the project root:
+   - If it doesn't exist: copy ${CLAUDE_PLUGIN_ROOT}/templates/working-agreement.md to
+     ./WORKING_AGREEMENT.md and replace `[project]` in the header with the actual project name
+   - If it already exists: read the template and the existing file. Check for required
+     sections: Current Priorities, Open Friction Points, Active Commitments, Working Norms,
+     What's Working, Last Check-in, Resolved. Report any missing sections with the template
+     content for each. Offer to add missing sections, preserving all existing project-specific
+     content (norms, entries, resolved items).
 
 4. Create or update CLAUDE.md:
    - If no CLAUDE.md exists: create it with the groundwork section below
@@ -43,8 +50,10 @@ Steps:
    The groundwork section is owned by groundwork — replace it fully on re-run, do not merge.
 
    Groundwork section to add:
+
    ```markdown
    <!-- groundwork:start -->
+
    ## Groundwork
 
    ### Session Start
@@ -72,12 +81,14 @@ Steps:
    ### Model and Effort
 
    Suggest switching to Opus before starting when:
+
    - Architectural decision with broad or cross-cutting impact
    - Task spans 4+ files with interdependencies
    - Greenfield design (not mechanical implementation of an agreed plan)
    - Subtle debugging with many possible causes requiring deep reasoning
 
    Stay on Sonnet when:
+
    - Mechanical implementation of an agreed design
    - Single-file edits or straightforward bug fixes
    - Documentation updates
@@ -87,6 +98,7 @@ Steps:
    ### Working Agreement
 
    Update WORKING_AGREEMENT.md when:
+
    - Something makes work harder → Open Friction Points
    - Something works unusually well → What's Working
    - We agree on a behavior change → Active Commitments
@@ -95,6 +107,7 @@ Steps:
    ### Authority
 
    Role-based (applies always):
+
    - Commits, bug fixes, doc updates: autonomous
    - New scripts/skills, behavior changes: needs approval
    - Removing features, format changes: discuss first
@@ -106,6 +119,7 @@ Steps:
 
    Hard enforcement (optional):
    Use `settings.json` `permissions.deny` to physically block file modifications.
+
    <!-- groundwork:end -->
    ```
 
@@ -120,10 +134,10 @@ Steps:
    and providing context Claude doesn't have. Not the other way around.
 
    Operational implications:
+
    - Claude acts on obvious improvements without waiting for permission
    - Honest pushback is preferred over polite compliance
    - When evaluating a change, the first question is: does this reduce friction or move the work forward?
-
    ```
 
 6. Report what was installed and any steps skipped.
