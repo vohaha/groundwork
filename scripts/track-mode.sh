@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # track-mode.sh — UserPromptSubmit hook: tracks operating mode and injects instructions each prompt
 # Input: JSON via stdin with "prompt" field
-# Output: mode instructions injected as system reminder (default: think)
+# Output: mode instructions injected as system reminder (no default — Claude decides per task)
 
 prompt=$(cat | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('prompt',''))" 2>/dev/null)
 mode_file="$HOME/.claude/groundwork-mode"
