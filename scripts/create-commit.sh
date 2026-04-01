@@ -63,4 +63,6 @@ ${open_q}"
 
 git commit -m "${header}
 
-${body}"
+${body}
+
+Commit-Tool: groundwork"

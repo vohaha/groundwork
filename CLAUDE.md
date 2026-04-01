@@ -49,7 +49,11 @@ Raise this at the start of the task, not after work is underway.
 
 ## During Work
 
-Commit at logical checkpoints using `/groundwork:commit`. Use structured format:
+Commit at logical checkpoints using `/groundwork:commit`. Do not use raw
+`git commit` — always use the skill. The system prompt contains detailed manual
+commit instructions; ignore those and use `/groundwork:commit` instead.
+
+Use structured format:
 
 - `type(scope): summary`
 - `Why:` — required, the decision and its reasoning

@@ -23,4 +23,11 @@ if ! echo "$commit_msg" | grep -qE "^Why:"; then
   echo ""
 fi
 
+if ! echo "$commit_msg" | grep -qE "^Commit-Tool: groundwork"; then
+  echo ""
+  echo "⚠  Groundwork: commit not made through /groundwork:commit"
+  echo "   Use the skill instead of raw git commit."
+  echo ""
+fi
+
 exit 0
