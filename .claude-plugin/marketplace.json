@@ -1,0 +1,20 @@
+{
+  "name": "vohaha-groundwork",
+  "description": "Stable context and two-way working agreements for AI-assisted development",
+  "owner": {
+    "name": "vohaha",
+    "email": "vohaha@users.noreply.github.com"
+  },
+  "plugins": [
+    {
+      "name": "groundwork",
+      "description": "Stable context and two-way working agreements for AI-assisted development. Gives Claude ground to stand on.",
+      "version": "0.1.0",
+      "source": "./",
+      "author": {
+        "name": "vohaha",
+        "url": "https://github.com/vohaha"
+      }
+    }
+  ]
+}
