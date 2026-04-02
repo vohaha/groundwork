@@ -18,5 +18,8 @@ Create a structured git commit.
    - --active "<story>"     # optional: current story/epic
    - --discovered "<text>"  # optional: non-obvious things found
    - --open "<questions>"   # optional: unresolved decisions
+5. After committing, check WORKING_AGREEMENT.md for any Open Friction Points or
+   Active Commitments that this work completes. If any are done, mark them `[x]`
+   with a brief resolution note after `→` and save the file.
 
 $ARGUMENTS
