@@ -8,6 +8,7 @@ Session check-in. We are wrapping up.
 
 1. Read WORKING_AGREEMENT.md
 2. Update it:
+   - Mark completed Open Friction Points and Active Commitments as `[x]` — include a short resolution note after `→`
    - Any friction from this session → Open Friction Points
    - Anything that worked unusually well → What's Working
    - Any new agreements made → Active Commitments
