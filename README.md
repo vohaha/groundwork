@@ -4,6 +4,11 @@ Stable context and two-way working agreements for AI-assisted development.
 
 Gives Claude ground to stand on: orientation at session start, semantic git history, enforced working agreements, and explicit mode commands.
 
+<!-- VIDEO PLACEHOLDER
+     Replace with: [![Watch](thumbnail.png)](video-url)
+     Script: design/video-script-monologue.md
+-->
+
 ## What it does
 
 **Session start** — `SessionStart` hook runs `read-context.sh`: shows current branch, last commit state, next action, and open items. Claude is oriented before the first message.
@@ -79,6 +84,19 @@ Git commits are the natural boundary. A code change recorded alongside its ratio
 **What this means in practice:**
 
 `git log` becomes a decision ledger Claude can read at session start. Not just "what changed" but "why it changed, what was non-obvious, and what comes next." The working agreement captures the relational norms that git history doesn't. The mode commands eliminate the biggest source of inference overhead. Together, they turn a stateless tool interaction into something closer to a persistent working relationship.
+
+## FAQ
+
+### Doesn't Claude Code already have memory and Projects for this?
+
+Native memory answers: *what is this project?* Groundwork answers: *where are we right now, and what did we agree?* Those are different problems.
+
+- **CLAUDE.md is static.** It describes the project. It doesn't know what's in progress, what's blocked, or what changed priority this week.
+- **Native memory is unstructured and passive.** It stores facts but doesn't distinguish a permanent architectural decision from what you were doing yesterday. Nothing prompts it to orient Claude at session start.
+- **Commit history exists but isn't readable by future-Claude** without opinionated formatting. A terse commit message says *what* changed. A `Why:/State:/Next:` commit says *why* — so Claude can reconstruct reasoning, not just facts.
+- **"Decisions that stay made" has no native equivalent.** The working agreement is a contract. There's no built-in concept of "we agreed not to build this."
+
+Native memory is a notepad. Groundwork is a standup, a working agreement, and a commit discipline — composing what already exists into something with lifecycle and intent.
 
 ## Development
 

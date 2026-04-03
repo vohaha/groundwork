@@ -27,6 +27,7 @@
 <!-- Format: - [ ] [Claude/Human] What — YYYY-MM-DD -->
 
 - [ ] [Claude/Human] Review autonomy norms — are self-verification, request intake, self-escalation, and priority context working? Decide: keep as norms, adjust, or automate — 2026-04-03
+- [ ] [Human] Record and publish promo video — script + production notes in design/video-script-monologue.md; stack: OBS screen capture + ElevenLabs voice + CapCut edit; embed in README — 2026-04-03
 
 ## Working Norms
 
