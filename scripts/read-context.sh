@@ -27,6 +27,29 @@ case "$branch" in
   *) intent="" ;;
 esac
 
+# Environment detection — terminals should set $TERM_PROGRAM (e.g. via ~/.zshrc)
+term="${TERM_PROGRAM:-${TERM}}"
+
+shell_name=$(basename "$SHELL" 2>/dev/null)
+os_info=""
+if [ "$(uname -s)" = "Darwin" ]; then
+  os_ver=$(sw_vers -productVersion 2>/dev/null)
+  os_info="macOS ${os_ver}"
+else
+  os_info="$(uname -s)"
+fi
+arch=$(uname -m 2>/dev/null)
+
+env_parts=()
+[ -n "$term" ] && env_parts+=("$term")
+[ -n "$shell_name" ] && env_parts+=("$shell_name")
+[ -n "$os_info" ] && env_parts+=("$os_info")
+[ -n "$arch" ] && env_parts+=("$arch")
+env_line=""
+for part in "${env_parts[@]}"; do
+  [ -z "$env_line" ] && env_line="$part" || env_line="$env_line · $part"
+done
+
 uncommitted=$(git -C "$PROJECT_ROOT" status --porcelain 2>/dev/null | wc -l | tr -d ' ')
 
 open_items=0
@@ -36,6 +59,9 @@ fi
 
 echo ""
 echo "┌─ Groundwork: Session Start ────────────────────────────────────────────┐"
+if [ -n "$env_line" ]; then
+  printf "│  Env: %s\n" "$env_line"
+fi
 printf "│  Branch: %-20s  %s\n" "$branch" "$last_date"
 if [ -n "$intent" ]; then
   printf "│  Mode: %s\n" "$intent"

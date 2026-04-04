@@ -8,6 +8,7 @@
 ---
 
 ## Current Priorities
+
 <!-- 3 items max, ordered. What matters most right now. -->
 <!-- Claude reads this at session start — shapes judgment calls about effort, scope, and tradeoffs. -->
 <!-- Update when priorities shift. Empty = Claude can't make tradeoff decisions. -->
@@ -20,6 +21,8 @@
 
 <!-- What makes work harder — add when you notice it, either party -->
 <!-- Format: - [ ] [Claude/Human] Description — YYYY-MM-DD -->
+
+- [Claude] No declared user environment preferences — auto-detection covers runtime facts ($TERM_PROGRAM, $SHELL, etc.) but misses preferences, cross-machine consistency, and tool configuration state. Full solution: a dotfiles package as part of a broader dev infra convention, where each package writes to a known contract location (~/.config/devinfra.sh or similar) and groundwork sources it with warnings for missing packages. Blocked on: designing the package contract and handling coexistence with existing dotfiles — 2026-04-03
 
 ## Active Commitments
 
