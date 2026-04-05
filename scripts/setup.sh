@@ -21,19 +21,17 @@ echo "Git hooks"
 
 HOOKS_DIR="$PROJECT_ROOT/.git/hooks"
 
-cat > "$HOOKS_DIR/commit-msg" << 'HOOK'
+cat > "$HOOKS_DIR/commit-msg" << HOOK
 #!/usr/bin/env bash
-bash "__PLUGIN_ROOT__/scripts/validate-commit-msg.sh" "$1"
+bash "${PLUGIN_ROOT}/scripts/validate-commit-msg.sh" "\$1"
 HOOK
-sed -i '' "s|__PLUGIN_ROOT__|${PLUGIN_ROOT}|g" "$HOOKS_DIR/commit-msg"
 chmod +x "$HOOKS_DIR/commit-msg"
 echo "  ✓ commit-msg hook installed"
 
-cat > "$HOOKS_DIR/post-commit" << 'HOOK'
+cat > "$HOOKS_DIR/post-commit" << HOOK
 #!/usr/bin/env bash
-bash "__PLUGIN_ROOT__/scripts/check-agreements.sh" "$PWD"
+bash "${PLUGIN_ROOT}/scripts/check-agreements.sh" "\$PWD"
 HOOK
-sed -i '' "s|__PLUGIN_ROOT__|${PLUGIN_ROOT}|g" "$HOOKS_DIR/post-commit"
 chmod +x "$HOOKS_DIR/post-commit"
 echo "  ✓ post-commit hook installed"
 
