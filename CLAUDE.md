@@ -32,6 +32,9 @@ open questions, uncommitted count, and agreement item count.
 
 Read what the hook surfaces. Check WORKING_AGREEMENT.md if there are open items.
 
+If this is the first user message in the conversation (no prior assistant messages),
+print the session start box verbatim to the user before responding.
+
 ## Model and Effort
 
 Suggest switching to Opus before starting when:

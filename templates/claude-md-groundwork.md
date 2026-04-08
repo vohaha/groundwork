@@ -10,6 +10,9 @@ uncommitted count, and agreement item count.
 
 Check `WORKING_AGREEMENT.md` if there are open items.
 
+If this is the first user message in the conversation (no prior assistant messages),
+print the session start box verbatim to the user before responding.
+
 ### During Work
 
 Commit at logical checkpoints with `/groundwork:commit`.
