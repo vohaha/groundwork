@@ -16,9 +16,23 @@ last_body=$(git -C "$PROJECT_ROOT" log -1 --format="%b" 2>/dev/null || echo "")
 
 state_next=$(echo "$last_body" | grep "^Next:" | head -1 | sed 's/^Next: //')
 active=$(echo "$last_body" | grep "^Active:" | head -1 | sed 's/^Active: //')
-open_q=$(echo "$last_body" | awk '/^Open:/{found=1; next} found && /^(Why|State|Discovered|Active|Next|Before|Rejected|Assumes|Fragile|Commit-Tool):/{exit} found && /^$/{if(printed) exit; next} found{print; printed=1}' | head -2)
-assumes=$(echo "$last_body" | awk '/^Assumes:/{found=1; next} found && /^(Why|State|Discovered|Active|Next|Before|Rejected|Open|Fragile|Commit-Tool):/{exit} found && /^$/{if(printed) exit; next} found{print; printed=1}' | head -2)
-fragile=$(echo "$last_body" | awk '/^Fragile:/{found=1; next} found && /^(Why|State|Discovered|Active|Next|Before|Rejected|Open|Assumes|Commit-Tool):/{exit} found && /^$/{if(printed) exit; next} found{print; printed=1}' | head -2)
+
+# Single source of truth for commit field names.
+# To add a new field: add it here. Extraction function picks it up automatically.
+COMMIT_FIELDS="Why|Before|State|Next|Active|Rejected|Assumes|Fragile|Discovered|Open|Commit-Tool"
+
+_extract_field() {
+  local field="$1"
+  echo "$last_body" | awk -v f="$field" -v stop="$COMMIT_FIELDS" \
+    '$0 ~ ("^" f ":") {found=1; next}
+     found && $0 ~ ("^(" stop "):") {exit}
+     found && /^$/ {if (printed) exit; next}
+     found {print; printed=1}' | head -2
+}
+
+open_q=$(_extract_field "Open")
+assumes=$(_extract_field "Assumes")
+fragile=$(_extract_field "Fragile")
 
 # Trajectory: Next: values from last 3 commits (skip first — already shown above)
 trajectory=$(git -C "$PROJECT_ROOT" log --skip=1 -2 --format="%b" 2>/dev/null | grep "^Next:" | sed 's/^Next: //')

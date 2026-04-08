@@ -15,7 +15,7 @@ echo "── Groundwork: Structural Validation ───────────
 
 echo ""
 echo "Scripts"
-for script in validate-commit-msg.sh check-agreements.sh read-context.sh create-commit.sh statusline.sh track-mode.sh validate.sh setup.sh; do
+for script in validate-commit-msg.sh check-agreements.sh read-context.sh create-commit.sh statusline.sh track-mode.sh validate.sh setup.sh backlog.sh guard-env.sh set-intent.sh pre-push-version.sh; do
   path="$PLUGIN_ROOT/scripts/$script"
   if [ ! -f "$path" ]; then
     fail "$script — missing"
@@ -28,7 +28,7 @@ done
 
 echo ""
 echo "Skills"
-for skill in do think plan clear-mode commit check-in setup validate help; do
+for skill in do think plan clear-mode commit check-in setup validate help intent; do
   path="$PLUGIN_ROOT/skills/$skill/SKILL.md"
   if [ ! -f "$path" ]; then
     fail "$skill/SKILL.md — missing"
@@ -65,8 +65,8 @@ done
 
 echo ""
 echo "Commit format consistency (template vs script)"
-template_sections=$(grep -oE '\b(Why|State|Next|Active|Discovered|Open):' "$PLUGIN_ROOT/templates/commit-message.txt" | sort -u)
-script_sections=$(grep -oE '\b(Why|State|Next|Active|Discovered|Open):' "$PLUGIN_ROOT/scripts/create-commit.sh" | sort -u)
+template_sections=$(grep -oE '\b(Why|Before|State|Next|Active|Rejected|Assumes|Fragile|Discovered|Open):' "$PLUGIN_ROOT/templates/commit-message.txt" | sort -u)
+script_sections=$(grep -oE '\b(Why|Before|State|Next|Active|Rejected|Assumes|Fragile|Discovered|Open):' "$PLUGIN_ROOT/scripts/create-commit.sh" | sort -u)
 if [ "$template_sections" = "$script_sections" ]; then
   ok "template and script sections match"
 else
@@ -105,6 +105,20 @@ if [ -n "$PROJECT_ROOT" ] && [ -f "$PROJECT_ROOT/.git/hooks/commit-msg" ]; then
     ok "post-commit hook references check-agreements.sh"
   else
     fail "post-commit hook missing check-agreements.sh reference"
+  fi
+  if [ -f "$PROJECT_ROOT/.git/hooks/pre-push" ]; then
+    if [ -x "$PROJECT_ROOT/.git/hooks/pre-push" ]; then
+      ok "pre-push hook is executable"
+    else
+      fail "pre-push hook is not executable"
+    fi
+    if grep -q 'pre-push-version.sh' "$PROJECT_ROOT/.git/hooks/pre-push"; then
+      ok "pre-push hook references pre-push-version.sh"
+    else
+      fail "pre-push hook missing pre-push-version.sh reference"
+    fi
+  else
+    fail "pre-push hook missing — run /groundwork:setup to install"
   fi
 else
   echo "  — no project hooks found (run /groundwork:setup in a project)"
