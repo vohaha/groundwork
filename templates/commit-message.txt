@@ -4,9 +4,21 @@
 Why:
 
 
+Before:
+
+
 State:
 Next:
 Active:
+
+Rejected:
+
+
+Assumes:
+
+
+Fragile:
+
 
 Discovered:
 
@@ -16,7 +28,14 @@ Open:
 
 # ─────────────────────────────────────────────────────────────────
 # Required: header line, Why, State/Next
-# Optional: Active, Discovered, Open — delete sections that don't apply
+# Optional: all others — delete sections that don't apply
+#
+# Before:    — what was the behavior/state before this change?
+# Rejected:  — alternatives tried or considered and why they didn't work
+# Assumes:   — invariants this change relies on; if broken, this breaks
+# Fragile:   — non-obvious gotchas; things that look wrong but are intentional
+# Discovered — non-obvious findings made during this work
+# Open:      — unresolved decisions or questions
 #
 # Scaffold: this template is the human-facing scaffold (installed as ~/.gitmessage).
 # The parallel programmatic scaffold for Claude's commits is scripts/create-commit.sh.

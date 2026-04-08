@@ -47,6 +47,16 @@ Stay on Sonnet when:
 
 Raise this at the start of the task, not after work is underway.
 
+## Session Intent
+
+Declare intent at session start using `/groundwork:intent <mode> <target>`.
+
+Modes: `ship` | `explore` | `debug` | `refactor` | `design` | `review`
+
+Intent shapes commit types, authority scope, and operating style for the session.
+The check-in skill validates accomplishment against the declared done-criteria.
+If no intent is declared, infer from branch name or ask.
+
 ## During Work
 
 Commit at logical checkpoints using `/groundwork:commit`. Do not use raw
@@ -58,6 +68,10 @@ Use structured format:
 - `type(scope): summary`
 - `Why:` — required, the decision and its reasoning
 - `State: / Next:` — required, what comes after
+- `Before:` — optional, prior behavior/state (use for fix/refactor)
+- `Rejected:` — optional, approaches tried and why they failed
+- `Assumes:` — optional, invariants this relies on; if broken, this breaks
+- `Fragile:` — optional, non-obvious things that look wrong but are intentional
 - `Discovered:` — optional, non-obvious things found
 - `Open:` — optional, unresolved questions
 

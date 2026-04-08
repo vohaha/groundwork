@@ -3,12 +3,15 @@
 # Called by: groundwork:check-in, groundwork:commit skills
 # Usage: create-commit.sh --type <type> --summary <summary> --why <why> --next <next>
 #        [--scope <scope>] [--active <active>] [--discovered <discovered>] [--open <open>]
+#        [--before <prior-state>] [--rejected <tried-and-failed>]
+#        [--assumes <invariants>] [--fragile <gotchas>]
 #
 # Scaffold: this script is the programmatic scaffold for Claude's commits.
 # The parallel human-facing scaffold is templates/commit-message.txt (~/.gitmessage).
 # Both produce the same structure. If the format changes, update both.
 
 type="" scope="" summary="" why="" next="" active="" discovered="" open_q=""
+before="" rejected="" assumes="" fragile=""
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
@@ -20,6 +23,10 @@ while [[ $# -gt 0 ]]; do
     --active)     active="$2";     shift 2 ;;
     --discovered) discovered="$2"; shift 2 ;;
     --open)       open_q="$2";     shift 2 ;;
+    --before)     before="$2";     shift 2 ;;
+    --rejected)   rejected="$2";   shift 2 ;;
+    --assumes)    assumes="$2";    shift 2 ;;
+    --fragile)    fragile="$2";    shift 2 ;;
     *) echo "Error: unknown argument: $1" >&2; exit 1 ;;
   esac
 done
@@ -42,15 +49,43 @@ else
   header="${type}: ${summary}"
 fi
 
+# ── Required ──────────────────────────────────────────────────────────────
 body="Why:
-${why}
+${why}"
+
+# ── Pre-state context (optional) ──────────────────────────────────────────
+[ -n "$before" ]     && body="${body}
+
+Before:
+${before}"
+
+# ── State block ────────────────────────────────────────────────────────────
+body="${body}
 
 State:
 Next: ${next}"
-
 [ -n "$active" ]     && body="${body}
 Active: ${active}"
 
+# ── Decision record (optional) ─────────────────────────────────────────────
+# NOTE: if adding a field here, also update the awk extraction patterns in
+# read-context.sh — the stop-condition lists must include every field name.
+[ -n "$rejected" ]   && body="${body}
+
+Rejected:
+${rejected}"
+
+[ -n "$assumes" ]    && body="${body}
+
+Assumes:
+${assumes}"
+
+[ -n "$fragile" ]    && body="${body}
+
+Fragile:
+${fragile}"
+
+# ── Findings (optional) ────────────────────────────────────────────────────
 [ -n "$discovered" ] && body="${body}
 
 Discovered:

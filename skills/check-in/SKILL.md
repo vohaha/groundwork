@@ -6,6 +6,13 @@ disable-model-invocation: false
 
 Session check-in. We are wrapping up.
 
+0. If `~/.claude/groundwork-intent` exists, read it. Compare the `done:` criteria
+   against what was actually accomplished.
+   - **Fully met** — proceed normally.
+   - **Partially met** — surface unmet criteria as `--open` in the session commit
+     and add them to Open Friction Points in WORKING_AGREEMENT.md.
+   - **Not started** — note it in the session commit `--open`; don't manufacture
+     progress. The intent file is cleared at the next session start regardless.
 1. Read WORKING_AGREEMENT.md
 2. Update it:
    - Mark completed Open Friction Points and Active Commitments as `[x]` — include a short resolution note after `→`

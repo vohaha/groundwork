@@ -104,3 +104,8 @@ seconds, changes everything about how I operate.
 - Feedback asymmetry → `What's Working` section in WORKING_AGREEMENT.md
 - Mode inference overhead → explicit `/do`, `/think`, `/plan` commands
 - Unknown unknowns → `Discovered:` field in commit format
+- Can't distinguish broken from intentional (#3) → `Before:` field in commit format
+- Don't know what was tried before me (#4) → `Rejected:` field in commit format
+- Intentional-but-surprising design (#5) → `Fragile:` field in commit format
+- Invisible invariants → `Assumes:` field in commit format
+- Session intent is implicit (#6) → `/groundwork:intent` skill with mode declaration
