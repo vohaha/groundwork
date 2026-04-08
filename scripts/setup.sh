@@ -35,6 +35,13 @@ HOOK
 chmod +x "$HOOKS_DIR/post-commit"
 echo "  ✓ post-commit hook installed"
 
+cat > "$HOOKS_DIR/pre-push" << HOOK
+#!/usr/bin/env bash
+bash "${PLUGIN_ROOT}/scripts/pre-push-version.sh"
+HOOK
+chmod +x "$HOOKS_DIR/pre-push"
+echo "  ✓ pre-push hook installed"
+
 # 2. Install global commit template
 echo ""
 echo "Commit template"

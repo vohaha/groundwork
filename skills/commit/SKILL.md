@@ -9,13 +9,7 @@ Create a structured git commit.
 1. Run `git diff --staged` and `git status` to understand what's changing
 2. If nothing is staged, determine what to stage based on context; ask if unclear
 3. Determine the type and scope from the changes
-4. Check if the staged changeset touches plugin surface area (`skills/*/SKILL.md`,
-   `scripts/*.sh`). If yes, bump the version in both `.claude-plugin/plugin.json`
-   and `.claude-plugin/marketplace.json` before committing, then stage those files:
-   - New or removed `skills/*/SKILL.md` → minor bump (x.Y.0)
-   - Any other surface area change → patch bump (x.y.Z)
-   - Edit both files. The version field appears once in each.
-5. Create the commit using ${CLAUDE_PLUGIN_ROOT}/scripts/create-commit.sh:
+4. Create the commit using ${CLAUDE_PLUGIN_ROOT}/scripts/create-commit.sh:
    - --type <type>          # feat | fix | refactor | docs | test | chore | session | decide
    - --summary "<summary>"  # concise, present tense
    - --why "<rationale>"    # the decision or constraint that drove this change
@@ -29,7 +23,7 @@ Create a structured git commit.
    - --discovered "<text>"  # optional: non-obvious things found
    - --open "<questions>"   # optional: unresolved decisions
 
-6. After committing, check WORKING_AGREEMENT.md for any Open Friction Points or
+5. After committing, check WORKING_AGREEMENT.md for any Open Friction Points or
    Active Commitments that this work completes. If any are done, mark them `[x]`
    with a brief resolution note after `→` and save the file.
 
