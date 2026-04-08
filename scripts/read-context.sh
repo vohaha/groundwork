@@ -117,6 +117,8 @@ else
 fi
 printf "│\n│  Uncommitted: %-5s   Agreement open items: %s\n" "$uncommitted" "$open_items"
 echo "│"
+echo "│  → /groundwork:intent <mode> <target>   (ship|explore|debug|refactor|design|review)"
+echo "│"
 echo "│  Claude is the primary stakeholder. Human adapts."
 echo "└────────────────────────────────────────────────────────────────────────┘"
 echo ""

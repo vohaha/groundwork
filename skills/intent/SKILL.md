@@ -1,6 +1,7 @@
 ---
 name: intent
-description: Declare session intent — what we're doing, why, and when it's done. Shapes commit behavior, authority, and operating style.
+description: Declare session intent — what we're doing, why, and when it's done
+argument-hint: "[ship|explore|debug|refactor|design|review] [target]"
 disable-model-invocation: false
 ---
 
@@ -32,11 +33,13 @@ If arguments are incomplete, ask briefly — don't guess.
 ## Model guidance
 
 Suggest switching to Opus if intent is:
+
 - `design` with broad or cross-cutting scope
 - `debug` with many possible causes
 - `ship` spanning 4+ files with interdependencies
 
 Stay on Sonnet if intent is:
+
 - `ship` with a clear, narrow scope
 - `refactor` of a single module
 - `review` or `explore`
