@@ -71,8 +71,8 @@
 
 ## Last Check-in
 
-- Date: 2026-03-31
-- Notes: Hardened setup/validate pipeline (5 fixes). Added autonomous memory saving and parallel exploration as default norms. Both sourced from client agent feedback.
+- Date: 2026-04-08
+- Notes: Orientation + Q&A session. Confirmed session box reprint works. Reviewed autonomy norms evidence (norms leaving traces, no failures) but didn't formally close the item. Confirmed pre-push version bump working. Clarified plugin update flow for client projects.
 
 ---
 
