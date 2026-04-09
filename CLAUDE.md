@@ -53,11 +53,12 @@ Raise this at the start of the task, not after work is underway.
 ## Session Intent
 
 Declare intent at session start using `/groundwork:intent <mode> <target>`.
+Re-declare whenever the mode shifts — this is expected and cheap, not a reset.
 
 Modes: `ship` | `explore` | `debug` | `refactor` | `design` | `review`
 
-Intent shapes commit types, authority scope, and operating style for the session.
-The check-in skill validates accomplishment against the declared done-criteria.
+Intent is current operating mode, not a session contract. Sessions naturally move through multiple modes.
+It shapes commit types, authority scope, and operating style for whatever we're doing right now.
 If no intent is declared, infer from branch name or ask.
 
 ## During Work

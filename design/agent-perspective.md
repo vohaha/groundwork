@@ -108,4 +108,4 @@ seconds, changes everything about how I operate.
 - Don't know what was tried before me (#4) → `Rejected:` field in commit format
 - Intentional-but-surprising design (#5) → `Fragile:` field in commit format
 - Invisible invariants → `Assumes:` field in commit format
-- Session intent is implicit (#6) → `/groundwork:intent` skill with mode declaration
+- Session intent is implicit (#6) → `/groundwork:intent` skill with mode declaration; intent is current state not a contract, re-declare freely as mode shifts
