@@ -1,0 +1,36 @@
+{
+  "name": "groundwork",
+  "version": "0.2.1",
+  "description": "Stable context and two-way working agreements for AI-assisted development. Gives Codex ground to stand on.",
+  "author": {
+    "name": "vohaha",
+    "url": "https://github.com/vohaha"
+  },
+  "repository": "https://github.com/vohaha/groundwork",
+  "license": "MIT",
+  "keywords": [
+    "context",
+    "workflow",
+    "ai-collaboration",
+    "git-semantic",
+    "working-agreement"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "groundwork",
+    "shortDescription": "Stable context and working agreements for AI-assisted development",
+    "longDescription": "Groundwork adds stable session orientation, semantic commit discipline, and a two-way working agreement so Codex can operate with less friction across sessions.",
+    "developerName": "vohaha",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/vohaha/groundwork",
+    "defaultPrompt": [
+      "Set up groundwork in this repository and establish session intent before implementation."
+    ],
+    "screenshots": [],
+    "brandColor": "#1F6FEB"
+  }
+}

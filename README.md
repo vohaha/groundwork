@@ -98,6 +98,13 @@ Native memory answers: *what is this project?* Groundwork answers: *where are we
 
 Native memory is a notepad. Groundwork is a standup, a working agreement, and a commit discipline — composing what already exists into something with lifecycle and intent.
 
+## Install in Codex
+
+```bash
+codex plugin marketplace add https://github.com/vohaha/groundwork
+codex plugin install groundwork
+```
+
 ## Development
 
 ```bash
