@@ -39,7 +39,7 @@ done
 
 echo ""
 echo "Templates"
-for tpl in commit-message.txt working-agreement.md claude-md-groundwork.md; do
+for tpl in commit-message.txt working-agreement.md claude-md-groundwork.md agents-md-groundwork.md; do
   path="$PLUGIN_ROOT/templates/$tpl"
   [ -f "$path" ] && ok "$tpl" || fail "$tpl — missing"
 done

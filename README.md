@@ -41,6 +41,7 @@ Installs everything needed:
 - `~/.gitmessage` — global commit template (skipped if already set)
 - `WORKING_AGREEMENT.md` — created from template (skipped if already exists)
 - `CLAUDE.md` — groundwork section added (skipped if already present)
+- `AGENTS.md` — groundwork section added (skipped if already present)
 
 ## Commit format
 

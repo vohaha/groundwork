@@ -2,7 +2,7 @@
 # setup.sh — deterministic setup of groundwork git integration
 # Called by: groundwork:setup skill
 # Handles: hook files, commit template, chmod — all content-exact operations
-# Does NOT handle: WORKING_AGREEMENT.md, CLAUDE.md (those need judgment → skill prompt)
+# Does NOT handle: WORKING_AGREEMENT.md, CLAUDE.md, AGENTS.md (those need judgment → skill prompt)
 
 PLUGIN_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PROJECT_ROOT=$(git rev-parse --show-toplevel 2>/dev/null)
@@ -56,5 +56,5 @@ fi
 
 echo ""
 echo "────────────────────────────────────────────────────────────────────────"
-echo "  Hooks and template done. WORKING_AGREEMENT.md and CLAUDE.md handled by skill."
+echo "  Hooks and template done. WORKING_AGREEMENT.md, CLAUDE.md, and AGENTS.md handled by skill."
 echo ""

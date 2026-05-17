@@ -17,7 +17,7 @@ On a mid-session re-declaration, `done` criteria are optional — just mode + ta
 - **explore** — understanding code, investigating options. Read-only unless explicitly asked. Rarely commit; if anything, `docs` or `decide`. Risk: accidentally changing things.
 - **debug** — hunting a specific problem. Narrow authority — only touch what's causing the bug. Commit type: `fix`. Risk: fixing symptoms not causes.
 - **refactor** — restructuring without behavior change. Broader scope, but behavior must be preserved. Commit type: `refactor`. Risk: scope creep.
-- **design** — architectural decisions, design docs. Write to `design/` and `CLAUDE.md`, not production code. Commit type: `decide`, `docs`. Risk: implementing before deciding.
+- **design** — architectural decisions, design docs. Write to `design/`, `CLAUDE.md`, and `AGENTS.md` (if agent guidance changes), not production code. Commit type: `decide`, `docs`. Risk: implementing before deciding.
 - **review** — reading and evaluating. Read-only, produce observations. No commits typically. Risk: making changes instead of noting them.
 
 ## Steps

@@ -1,6 +1,6 @@
 ---
 name: setup
-description: One-time per-project setup — installs git hooks, commit template, WORKING_AGREEMENT.md, and CLAUDE.md
+description: One-time per-project setup — installs git hooks, commit template, WORKING_AGREEMENT.md, CLAUDE.md, and AGENTS.md
 disable-model-invocation: false
 ---
 
@@ -31,7 +31,16 @@ Steps:
 
    The groundwork section is owned by groundwork — replace it fully on re-run, do not merge.
 
-4. Seed user-owned sections in CLAUDE.md (skip each if already exists):
+4. Create or update AGENTS.md:
+   - Read the groundwork template from ${CLAUDE_PLUGIN_ROOT}/templates/agents-md-groundwork.md
+   - If no AGENTS.md exists: create it with the template content
+   - If AGENTS.md exists but has no groundwork section: append the template content
+   - If AGENTS.md already has a groundwork section (detected by `<!-- groundwork:start -->` marker
+     or `## Groundwork` heading): replace it with the template content
+
+   The groundwork section is owned by groundwork — replace it fully on re-run, do not merge.
+
+5. Seed user-owned sections in CLAUDE.md (skip each if already exists):
 
    a. Operating Mode (skip if `## Operating Mode` exists):
       Prepend before the groundwork section.
@@ -61,7 +70,7 @@ Steps:
         Update during check-in when domain understanding deepens. -->
    ```
 
-5. Create `docs/domain/` directory if it doesn't exist:
+6. Create `docs/domain/` directory if it doesn't exist:
    ```
    mkdir -p docs/domain
    ```
@@ -81,9 +90,9 @@ Steps:
    - `terminology.md` — domain-specific terms and their meanings
    ```
 
-6. Run validation: bash "${CLAUDE_PLUGIN_ROOT}/scripts/validate.sh"
+7. Run validation: bash "${CLAUDE_PLUGIN_ROOT}/scripts/validate.sh"
    If any checks fail, fix them before reporting.
 
-7. Report what was installed, any steps skipped, and validation results.
+8. Report what was installed, any steps skipped, and validation results.
 
 $ARGUMENTS

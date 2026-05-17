@@ -20,7 +20,7 @@ Your role is to run the right commands and keep the working agreement current.
 /groundwork:setup
 ```
 
-Installs git hooks, creates WORKING_AGREEMENT.md and CLAUDE.md.
+Installs git hooks, creates WORKING_AGREEMENT.md, and sets up CLAUDE.md + AGENTS.md groundwork sections.
 
 ### During a session
 
