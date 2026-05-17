@@ -9,7 +9,7 @@
     {
       "name": "groundwork",
       "description": "Stable context and two-way working agreements for AI-assisted development. Gives Claude ground to stand on.",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "source": "./",
       "author": {
         "name": "vohaha",
